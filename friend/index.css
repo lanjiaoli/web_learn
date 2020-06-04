@@ -3,11 +3,29 @@
     padding: 0px;
 }
 
-body{
-    width: 375px;
-}
+
 .navigation{
     width: 100%;
     height: 500px;
-    background-image: url(./image/background.jpeg);
+    position: relative;
+}
+.navigation img:nth-child(1){
+    width: 100%;
+    height: 100%;
+}
+.navigation h3{
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    position :absolute;
+    width: 100%;
+    top: 40%;
+}
+.headerimage{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    border-radius: 10px;
+    bottom: -20px;
+    right: 20px;
 }
