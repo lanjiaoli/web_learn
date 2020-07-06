@@ -121,4 +121,159 @@ var sortChar = function(value){
 }
 
 var sortArray = sortChar("asdfghjkl");
-console.log(sortArray);
+
+const findLength = (A, B) => {
+    const m = A.length;
+    const n = B.length;
+    const DP = new Array(m+1);
+
+    for (let index = 0; index <= m; index++) {
+        DP[index]= new Array(n+1).fill(0);
+    }
+
+    let res = 0;
+
+    for (let index = 1; index <= m; index++) {
+        for (let j = 1; j <= n; j++) {
+            if(A[index-1] == B[j-1]){
+                DP[index][j] = DP[index - 1][j - 1] + 1;
+            }
+            res = Math.max(DP[index][j], res);
+        }
+        
+    }
+    return res;
+
+}
+
+var res = findLength([1,2,3,5,6,],[1,2,3,5,6]);
+console.log(res);
+
+ 
+
+/**
+ * 给定一个 n x n 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第 k 小的元素。
+ * 请注意，它是排序后的第 k 小元素，而不是第 k 个不同的元素。
+ * @param {number[][]} matrix
+ * @param {number} k
+ * @return {number}
+ */
+var kthSmallest = function(matrix, k) {
+    // var length = matrix.length;
+    // //总共的数量
+    // var numbers =  new Array();
+    // for (let index = 0; index < length; index++) {
+        
+    //     var values = matrix[index];
+      
+    //     for (let j = 0; j < values.length; j++) {
+    //         numbers.push(values[j])
+    //     }
+    // }
+    // numbers.sort((a,b) => a - b);
+
+    var numbers =  matrix.reduce((a, b) => merge(a,b));
+    var res = numbers[k-1];
+    return res;
+};
+/**
+ * 归并排序
+ * @param {数组} left 
+ * @param {数组} right 
+ */
+function merge(left , right){
+    var llen = left.length;
+    var rlen = right.length;
+
+    var i = 0;
+    var j = 0
+    var res = [];
+    while (i < llen && j < rlen) {
+        var lres = left[i];
+        var rres = right[j];
+        if (lres <= rres) {
+            res.push(left[i++]);
+        }else{
+            res.push(right[j++]);
+        }
+    }
+    while(i < llen) res.push(left[i++])
+    while(j < rlen) res.push(right[j++])
+    return res;
+}
+var res = kthSmallest([
+    [ 1, 2],
+    [1,3] ], 2);
+ console.log(res);
+
+
+
+ /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+function TreeNode(){
+
+    var obj = new Object()
+    var left  = 0;
+    var right = 1;
+
+    return obj;
+}
+var sortedArrayToBST = function(nums) {
+    const buildBST = (nums, start, end)=>{
+        if (start > end) {
+            return null;
+        }
+        const mid = (start + end)/2;
+        const root = new TreeNode(nums[mid]);
+        root.left = buildBST(nums,start, mid-1);
+        root.right = buildBST(nums,mid+1,end);
+        return root;
+    }
+    return buildBST(nums, 0, nums.length-1);
+};
+
+var resValue = sortedArrayToBST([-10,-3,0,5,9]);
+console.log(resValue);
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestValidParentheses = function(s) {
+
+    var maxLength = 0;
+    var stack = [-1];
+    
+    for (let index = 0; index < s.length; index++) {
+        var value = s[index];
+        if(value == '('){
+            //入栈
+            stack.push(index)
+        }else{
+            //出栈
+            stack.pop();
+            if (stack.length == 0) {
+                stack.push(index);
+            }else{
+                maxLength = Math.max(maxLength, index - stack[stack.length -1]);
+            }
+        }        
+    }
+
+    return maxLength;
+    
+};
+
+console.log('====================================');
+var result =  longestValidParentheses('()')
+console.log(result);
+console.log('====================================');
