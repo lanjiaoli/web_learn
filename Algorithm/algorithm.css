@@ -44,8 +44,7 @@ hr{
     display: inline-block;
     right: 10px;
 }
-.orginal_href>a{
-    /* position: relative; */
-    /* right: 10px; */
-    /* margin-right: 10px; */
+a{
+    color: #6699FF;
+    text-decoration: none;
 }

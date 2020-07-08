@@ -86,3 +86,37 @@ var hasPathSum = function(root, sum) {
 function opetnOrginalUrl(url){
     window.open(url);
 }
+
+
+/**
+ * 2020.07.08 
+ * 你正在使用一堆木板建造跳水板。有两种类型的木板，
+ * 其中长度较短的木板长度为shorter，
+ * 长度较长的木板长度为longer。
+ * 你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。
+ * @param {number} shorter
+ * @param {number} longer
+ * @param {number} k
+ * @return {number[]}
+ */
+var divingBoard = function(shorter, longer, k) {
+    if (k == 0) {
+        return [];
+    }
+    if (shorter == longer) {
+        return [k * shorter]
+    }
+    var s = k;
+    var l = 0;
+    var vals = new Array();    
+    while (s >=  0) {
+        var sum = shorter * s + l *longer;
+        vals.push(sum);
+        s--;
+        l++
+    }
+    vals.sort((a,b) => a-b);
+    return vals;
+};
+var result0708  = divingBoard(1,2,3);
+console.log(result0708);
