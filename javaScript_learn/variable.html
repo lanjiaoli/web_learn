@@ -3,25 +3,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <frameset rows="160,*">
-        <frame src="frame.html" name="topFrame">
-            <frameset cols="50%, 50%">
-                <frame src="anotherframe.htm" name="leftframe">
-                <frame src="anotherframe.htm" name="rightframe">
-            </frameset>
-    </frameset> -->
+    <style>
+        .inline-table{
+            background-color: blue;
+            display: inline;
+        }
+        p{
+            /* display: inline; */
+        }
+        .ao,
+        .tu {
+  display: inline-block;
+  width: 0;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 35px;
+  color: #fff;
+}
+.ao:before,
+.tu:before {
+  outline: 2px solid #cd0000;
+  font-family: Consolas, Monaco, monospace;
+}
+.ao:before {
+  content: "love你love";
+}
+.tu {
+  direction: rtl;
+}
+.tu:before {
+  content: "我love你";
+}
+
+    </style>
 </head>
 <body>
     <!-- <script src="variable.js"></script> -->
     <!-- <script src="function.js"></script> -->
     <!-- <script src="string.js"></script> -->
     <!-- <script src="Object.js"></script> -->
-    <!-- <script src="BOM.js"></script> -->
-    <script src="client.js"></script>
+    <script src="algorithm.js"></script>
 
+    <div>和文字平起平坐
+        <div class="inline-table">
+            <p>第一列</p>
+            <p>第二列</p>
+        </div>
+        
+        
+    </div>
 
-    <p>Enjoy this page for a second because you won't be coming back here.</p>
- 
-    <a href="next.html">1111</a>
+    <span class="ao"></span>
+    <span class="tu"></span>
+
 </body>
 </html>

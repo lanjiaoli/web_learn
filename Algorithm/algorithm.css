@@ -1,0 +1,50 @@
+*{
+    background-color: cornsilk;
+    /* margin: 10px; */
+}
+.header_date{
+    margin-top: 20px;
+    border-left: 5px solid #9933FF;
+}
+.header_date_p{
+    color: #FF6666; 
+    font-size: 20px; 
+    font-weight: bold;
+    
+    padding-left: 10px;
+}
+
+hr{
+    border: 1px dashed #dbdbdb;
+}
+/* 标题 */
+.title_stytle{
+    font-size: 18px;
+    color : #333333;
+    font-weight: bold;
+    margin: 10px 0px;
+    /* padding-left: 10px; */
+}
+/* 内容 */
+.content_stytle{
+    font-size: 16   px;
+    color : #999999;
+    margin: 10px 0px;
+    text-indent: 1.5em;
+}
+.orginal_href{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    /* background-color: black; */
+}
+.orginal_href>div{
+    position: absolute;
+    background-color: aqua;
+    display: inline-block;
+    right: 10px;
+}
+a{
+    color: #6699FF;
+    text-decoration: none;
+}
