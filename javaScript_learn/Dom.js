@@ -144,3 +144,198 @@ console.log("取得特----------------- 性")
 
     //  var someOtherid = div.attributes["id"].nodeValue;  //简写 []表示
     //  console.log(someOtherid)
+
+    function outPutAttributes(element) {
+        var pairs = new Array(),
+        attrName,
+        attrValue,
+        i,
+        len;
+
+        for (let i = 0; i < element.attributes.length; i++) {
+            attrName = element.attributes[i].nodeName;
+            attrValue = element.attributes[i].nodeName;
+            //specified：如果返回true则意味着html中指定了相应特性，要么通过setAttronite()方法设置了该特性，
+            
+            if (element.attributes[i].specified) {
+                pairs.push(attrName+"=\"" + attrValue+"\"")
+            }
+            
+        }
+
+
+        return pairs.join(" ");
+        
+    }
+
+    /**
+     * 创建元素
+     *     
+     */
+
+     var divMore = document.createElement("div");
+    //  divMore.nodeValue = "这是我创建的元素"
+     divMore.innerHTML = "这是我创建的元素"
+     document.body.appendChild(divMore)
+
+    //  if (cl) {
+         
+    //  }
+
+    var element = document.createElement("div");
+    element.className = "message";
+    var textNode = document.createTextNode("Hello world");
+    element.appendChild(textNode);
+    // var textNode = document.createTextNode("Hello world");
+    // element.appendChild(textNode);
+    document.body.appendChild(element);
+    //会将所有文本节点合并成一个节点
+    element.normalize()
+    
+    /**
+     * 分割文本节点
+     * splitText()方法将一个文本节点分成两个文本节点，即按照指定位置分割nodeValue值
+     */
+
+     var newNode = element.firstChild.splitText(5);
+     console.log(element.firstChild.nodeValue)
+     console.log(newNode.nodeValue)
+
+     /**
+      * Comment 类型
+      * nodeType 的值为8
+      * nodeName的值为"#comment"
+      */
+     var div = document.getElementById("comment");
+     var comment  =  div.firstChild;
+     console.log(comment);
+
+     /**
+      * DocumentFragment类型
+      * 
+      */
+
+      var fragment = document.createDocumentFragment();
+      var ul = document.getElementById("myList");
+      var li = null;
+      for (let index = 0; index < 3; index++) {
+        li = document.createElement("li");
+        li.appendChild(document.createTextNode("Item " + (index+1)));
+        fragment.appendChild(li)
+      }
+      ul.appendChild(fragment);
+
+
+      /**
+       * Atter类型
+       */
+
+       var attr = document.createAttribute("align");
+
+       attr.value = "left";
+
+       element.setAttributeNode(attr);
+       console.log(element.attributes["align"].value)
+
+
+       /**
+        * 10.2 DOM操作技术
+        */
+
+        /**
+         * 动态脚本
+         */
+
+         var script = document.createElement("script");
+         script.type = "text/javascript";
+        //  script.src = "client.js";
+        script.text = "function sayHi(){console.log('Hi')}"
+         document.body.appendChild(script);
+        
+
+         function loadScriptString(code){
+           var script = document.createElement("script");
+           script.type = "text/javascript";
+          try {
+            script.appendChild(document.createTextNode(code));
+          } catch (error) {
+            script.text = code;
+          }
+          document.body.appendChild(script);
+         };
+
+
+
+         /**
+          * 动态样式
+          */
+        //  动态添加外部CSS样式
+          var link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.type = "text/css";
+          link.href = "styledom.css"
+          var head = document.getElementsByTagName("head")[0];
+          head.appendChild(link)
+
+
+          //嵌入式css样式
+          function loadStyleString(code){
+            var style = document.createElement("style");
+            style.type = "text/css";
+          try {
+            style.appendChild(document.createTextNode(code));
+          } catch (error) {
+            style.text = code;
+          }
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(style)
+          }
+
+          loadStyleString("body{background-color:bisque}");
+
+          var hr = document.createElement("hr");
+
+          document.body.appendChild(hr)
+          /**
+           * 操作表格
+           */
+          //创建表格
+           var table = document.createElement("table");
+           table.border = 2;
+           table.width = "100%";
+
+          //  创建tbody
+          var tbody = document.createElement("tbody");
+          table.appendChild(tbody)
+
+          // var row1 = document.createElement("tr");
+          // tbody.appendChild(row1);
+
+          // var cell1_1 = document.createElement("tr");
+          // cell1_1.appendChild(document.createTextNode("cell 1, 1"));
+          // row1.appendChild(cell1_1);
+
+          // var cell1_2 = document.createElement("tr");
+          // cell1_2.appendChild(document.createTextNode("cell 1, 2"));
+          // row1.appendChild(cell1_2);
+
+          tbody.insertRow(0);
+          tbody.rows[0].insertCell(0);
+          tbody.rows[0].cells[0].appendChild(document.createTextNode("cell,1,1"));
+          tbody.rows[0].insertCell(1);
+          tbody.rows[0].cells[1].appendChild(document.createTextNode("cell,1,2"));
+
+
+          // // 创建第二行
+          // var row2 = document.createElement("tr");
+          // tbody.appendChild(row2);
+
+          // var cell2_1 = document.createElement("tr");
+          // cell2_1.appendChild(document.createTextNode("cell 2, 1"));
+          // row1.appendChild(cell2_1);
+
+          // var cell2_2 = document.createElement("tr");
+          // cell2_2.appendChild(document.createTextNode("cell 2, 2"));
+          // row1.appendChild(cell2_2);
+
+          document.body.appendChild(table);
