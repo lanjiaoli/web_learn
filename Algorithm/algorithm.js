@@ -223,3 +223,43 @@ console.log('====================================');
 // console.log("2020.07.09测试答案:" + sentence);
 console.log('====================================');
 console.log("2020.07.09测试答案:" + sentence1);
+
+
+
+/**
+ * @param {number[][]} dungeon
+ * @return {number}
+ */
+var calculateMinimumHP = function(dungeon) {
+    if (obstacleGrid[0][0] == 1) {
+        return 1;
+    }
+    let m = obstacleGrid.length 
+    let n = obstacleGrid[0].length
+
+    // 取最大值
+    let min = Number.MAX_VALUE;
+
+    let dp = new Array(n+1).fill(min);
+    dp[n-1] = 1;
+    for (let i = m- 1; i >= 0; i--) {
+        for (let j =n-1 ; j >= 0; j--) {
+            dp[j] = Math.max(1,Math.min(dp[j], dp[j+1]) - dungeon[i][j])
+        }
+         
+     }
+     return dp[0];
+};
+var calculateMinimumHP = function (dungeon) {
+    let m = dungeon.length,
+      n = dungeon[0].length,
+      max = Number.MAX_VALUE;
+    let dp = new Array(n + 1).fill(max);
+    dp[n - 1] = 1;
+    for (let i = m - 1; i >= 0; --i) {
+      for (let j = n - 1; j >= 0; --j) {
+        dp[j] = Math.max(1, Math.min(dp[j], dp[j + 1]) - dungeon[i][j]);
+      }
+    }
+    return dp[0];
+  };
