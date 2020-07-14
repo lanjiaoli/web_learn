@@ -160,13 +160,20 @@
             </div>
           
         </div>
-        <div>
-            <p id="result0714"></p>
-        </div>
-        
+            <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px; box-shadow: rgba(170, 170, 170, 0.48) 0px 0px 6px 0px; max-width: 100%; border-radius: 4px; margin: 10px auto 0 auto;"><span style="display: block; background: url(https://imgkr.cn-bj.ufileos.com/97e4eed2-a992-4976-acf0-ccb6fb34d308.png); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> minimumTotal = <span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">function</span>(<span class="hljs-params" style="line-height: 26px;">triangle</span>) </span>{
+                <span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> n = triangle.length;
+                <span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> dp = <span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">new</span> <span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Array</span>(n+<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>).fill(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">0</span>);\
+                <span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span> (<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">let</span> index = n<span class="hljs-number" style="color: #d19a66; line-height: 26px;">-1</span>; index &gt;= <span class="hljs-number" style="color: #d19a66; line-height: 26px;">0</span>; index--) {\
+                <span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> m = triangle[index].length\
+                <span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span> (<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">let</span> j = <span class="hljs-number" style="color: #d19a66; line-height: 26px;">0</span>; j &lt; m; j++) {
+                <span/>dp[j] = <span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Math</span>.min(dp[j], dp[j+<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>])+ triangle[index][j]
+                <span/>}
+                <span/>}
+                <span/><span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(dp);
+                <span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span> dp[<span class="hljs-number" style="color: #d19a66; line-height: 26px;">0</span>];}
+                <span/></code></pre>
     </div>
 
     <script src="algorithm.js" defer="defer"></script>
-
 </body>
 </html>

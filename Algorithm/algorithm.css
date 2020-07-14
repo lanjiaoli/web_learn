@@ -1,4 +1,4 @@
-*{
+body{
     background-color: cornsilk;
     /* margin: 10px; */
 }
@@ -27,7 +27,7 @@ hr{
 }
 /* 内容 */
 .content_stytle{
-    font-size: 16   px;
+    font-size: 16px;
     color : #999999;
     margin: 10px 0px;
     text-indent: 1.5em;
