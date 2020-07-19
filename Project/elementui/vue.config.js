@@ -16,20 +16,24 @@ module.exports = {
 
     // chainWebpack:()=>{},
     // // css相关配置
-    // css:{
-    //     // 启用 css modules
-    //     modules:false,
-    //     // 是否使用css分离插件
-    //     extract:true,
-    //     // 开启css  source Map 
-    //     sourceMap:false,
-    //     // css预设器配置
-    //     loaderOptions:{},
-    // },
+    css:{
+        // 启用 css modules
+        // modules:false,
+        // // 是否使用css分离插件
+        // extract:true,
+        // // 开启css  source Map 
+        // sourceMap:false,
+        // css预设器配置
+        loaderOptions:{
+            sass:{
+                data: '@import "@/assets/scss/_variable.scss"'
+            }
+        }
+    },
     // webpack-dev-server相关配置
     devServer:{
         // host:'0.0.0.0',
-        port: 333,
+        port: 3333,
         // 自动打开浏览器
         open: true,
         // 设置代理
