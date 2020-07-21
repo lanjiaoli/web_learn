@@ -14,7 +14,7 @@ var searchInsert = function(nums, target) {
     while (low <= hight) {
         var mid  = ((hight - low)>>1) + low;
         var midnum = nums[mid];
-        if (midnum <= target) {
+        if (midnum >= target) {
             ans = mid;
             hight = mid -1;
         }else{
