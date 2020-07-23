@@ -397,17 +397,32 @@ console.log(result);
    [6,5,7],
   [4,1,8,3]
  ]);
- console.log(result0714);
- var result0714P = document.getElementById('result0714');
- result0714P.innerHTML = "var minimumTotal = function(triangle) {\<br>\
-    var n = triangle.length;\
-    var dp = new Array(n+1).fill(0);\
-    for (let index = n-1; index >= 0; index--) {\
-        var m = triangle[index].length\
-        for (let j = 0; j < m; j++) {\
-            dp[j] = Math.min(dp[j], dp[j+1])+ triangle[index][j]\
-        }\
-    }\
-    console.log(dp);\
-    return dp[0];}"
     
+ function scrolltoTop(){
+ 
+    document.body.scrollTop=document.documentElement.scrollTop=0
+    console.log("跳转到顶部");
+    document.body.scrollIntoView()
+}
+// // 控制按钮的显示和消失
+// $(window).scroll(function(){
+//     if($(window).scrollTop()>300){
+//         $('sitck_div').fadeIn(300);
+//         }
+//      else{$('sitck_div').fadeOut(200);}
+//          })
+
+// // 点击按钮，使得页面返回顶部
+// $("#sitck_div").click(function(){
+// scrollTo(0,0);
+// });
+// // 鼠标悬浮按钮之上，图片消失，文字显示
+// $(".top_e").mouseover(function(){
+// $("#img").hide();
+// $("#font").show();
+// })
+// //鼠标离开，文字消失，图片显示。
+// $(".top_e").mouseout(function(){
+// $("#font").hide();
+// $("#img").show();
+// })

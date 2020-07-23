@@ -1,80 +1,26 @@
 <html lang="en">
+    <style>
+        body{
+            background-image: url("https://mmbiz.qpic.cn/mmbiz_png/33P2FdAnjuicyiaYrL89ubVfYmd0ofN6elFsyBZIzXyL8GIWmSfeVROs2hIXY7TRFTyLTI2gKKnwAZiboIcB3wXzw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        //创建对象的2种方式
-        let person = new Object();
-         person.name = 'Linuse'
-         person.age = 28
-         person.welcome = function() {
-            console.log('he name is' + this.name  + 'age is' + this.age);
-         };
+    <button onclick="getimage()">获取图片地址</button>
+    <img src="https://mmbiz.qpic.cn/mmbiz_png/33P2FdAnjuicyiaYrL89ubVfYmd0ofN6elFsyBZIzXyL8GIWmSfeVROs2hIXY7TRFTyLTI2gKKnwAZiboIcB3wXzw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="" srcset="">
+    <img data-ratio="1.6216216216216217" data-src="https://mmbiz.qpic.cn/mmbiz_png/33P2FdAnjuicyiaYrL89ubVfYmd0ofN6elR8AvH9T8iadbvMfNTyTZsoGL21sxbvUtQ0pma0SNzqktOk0kKIzushQ/640?wx_fmt=png" data-type="png" data-w="518" style="letter-spacing: 0.008em; visibility: visible !important; width: 257px !important; height: auto !important;" _width="257px" data-darkmode-bgcolor-15954936931579="rgb(25, 25, 25)" data-darkmode-original-bgcolor-15954936931579="rgb(255, 255, 255)" data-darkmode-color-15954936931579="rgb(163, 163, 163)" data-darkmode-original-color-15954936931579="rgb(64, 64, 64)" class="" src="https://mmbiz.qpic.cn/mmbiz_png/33P2FdAnjuicyiaYrL89ubVfYmd0ofN6elR8AvH9T8iadbvMfNTyTZsoGL21sxbvUtQ0pma0SNzqktOk0kKIzushQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" crossorigin="anonymous" data-fail="0">
 
-         //键值对
-         let person2 = {
-             name : 'Linuse',
-             age : 20,
-             welcome : function(){
-                console.log('he name is' + this.name  + 'age is' + this.age);
-
-             }
-
-         };
-
-         let animal = {
-             _name: '这是一个名字',
-         };
-         // 对象中的属性可以通过‘defineProperty’动态添加
-         Object.defineProperty(animal, 'age',{
-            // 可配置性  表明是否可以删除或修改该属性 
-            configurable: true,
-            // 是否可通过for循环来遍历返回该属性
-            enumerable : true,
-            // 是否可对属性的值进行修改
-            writable:true,
-            
-            //值
-            value: 10
-
-        });
-
-        var name = '这是一个属性名称'
-
-        function callVar(isNew){
-            if (isNew) {
-                var age = 20;
-            }else{
-                var age = 30;
-            }
-
-            callVar(true)
-            console.log(name);
-        };
-        function createPerson(name,age){
-            let o = new Object();
-            o.name = name;
-            o.gae = age;
-            o.welcome = function(){
-                console.log('He name is ' + this.name + ' age is ' + this.age);
-            };
-            return o;
-        }
-
-        function Person(name, age){
-            this.name = name;
-            this.age = age;
-            this.welcome = function(){
-                console.log('He name is ' + this.name + ' age is ' + this.age);
-            };
-        }
-
-
-        let person3 =  new Person('person1' , 30);
-        person3.welcome();
-
-    </script>
+    <img data-backh="306" data-backw="578" 
+    data-ratio="0.5291411042944786" 
+    data-src="https://mmbiz.qpic.cn/mmbiz_png/33P2FdAnjuicyiaYrL89ubVfYmd0ofN6elHXcAjRqicHniatDef1ib2qgb35dmbyHliaAltbzSDk5pwnuS4Aib94FyBCw/640?wx_fmt=png" 
+    data-type="png" data-w="1304" style="width: 100% !important; height: auto !important; visibility: visible !important;" _width="100%" class="" 
+    src="https://mmbiz.qpic.cn/mmbiz_png/33P2FdAnjuicyiaYrL89ubVfYmd0ofN6elHXcAjRqicHniatDef1ib2qgb35dmbyHliaAltbzSDk5pwnuS4Aib94FyBCw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+     crossorigin="anonymous" data-fail="0">
+    <script src="test.js"></script>
 </head>
 <body>
     
