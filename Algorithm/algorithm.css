@@ -29,9 +29,13 @@ hr{
 /* 内容 */
 .content_stytle{
     font-size: 16px;
-    color : #999999;
+    color : #666666;
     margin: 10px 0px;
     text-indent: 1.5em;
+}
+li{
+    font-size: 16px;
+    color : #666666;
 }
 .orginal_href{
     position: relative;
