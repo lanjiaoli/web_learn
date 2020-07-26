@@ -110,4 +110,103 @@ var button = document.querySelector("img.button")
       /**
        * InnerHTML属性
        */
+
+       var innerHtml = document.getElementById("content")
+    //    innerHtml.innerHTML = "HTML WORLD"
+
+    //    innerHtml.innerHTML = "hello & welcome <b>\"reader\"!</b>"
+
+       /**
+        * outerHTML属性
+        * 返回调用它的元素及子节点的HTML标签
+        */
+
+    //   console.log(innerHtml.outerHTML);
+    //   innerHtml.outerHTML = "<p>This  is  a paragraph</p>"
+
+      /**
+       * inserAdjacentHTML()方法
+       */
+
+    //    作为前一个同辈元素插入
+    innerHtml.insertAdjacentHTML('beforebegin',"<p>beforebegin</p>");
+
+    // 作为第一个子元素插入
+    innerHtml.insertAdjacentHTML('afterbegin',"<p>afterbegin</p>");
+    
+//    作为最后一个子元素插入
+    innerHtml.insertAdjacentHTML('beforeend',"<p>beforeend</p>");
+
+    // 作为后一个同辈元素插入
+    innerHtml.insertAdjacentHTML('afterend',"<p>afterend</p>");
+
+    innerHtml.scrollIntoView();
+
+   /**
+    * children属性
+    * 
+    */
+   console.log(innerHtml.children)
+   console.log(innerHtml.childNodes)
+
+   /**
+    * contains()方法 
+    */
+
+    console.log(document.documentElement.contains(document.body))
+
+    var result = document.documentElement.compareDocumentPosition(document.body)
+    console.log(result)
+
+    // 通用的contains()函数
+    function contains(refNode,otherNode) {
       
+      if(typeof refNode.contains == "function" && !client.engine.webkit ||client.engine.webkit  >= 552){
+        return refNode.contains(otherNode);
+      }else if (typeof refNode.compareDocumentPosition("function")) {
+        return !!(refNode.compareDocumentPosition(otherNode) &16);
+        
+      }else{
+        var node = otherNode.parentNode;
+        do {
+            if(node == refNode){
+              return true
+            }else{
+              node = node.parentNode;
+            }
+        } while (node != null);
+        return false
+      }
+    }
+
+
+    /**
+     * 11.4.4插入文本
+     */
+
+    // innerHtml.innerText = "hello world"
+
+    // innerHtml.innerText = "hello & world <b>\"reader\"!</b>"
+
+    // 为确保跨浏览器兼容器，
+    function getInnerText(element){
+      if  (typeof element.texContent == "string") {
+        return element.texContent 
+      }
+      return element.innerText;
+    }
+
+    function setInnerText(element , text){
+
+      if (typeof element.texContent == "string") {
+         element.texContent = text;
+        
+      }else{
+        element.innerText = text;
+      }
+
+      innerHtml.outerText =  "hello world"
+
+    }
+
+    document.body.scrollBy

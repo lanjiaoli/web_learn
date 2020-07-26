@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px"><common-aside></common-aside></el-aside>
+    <el-aside><common-aside></common-aside></el-aside>
     <el-container>
       <el-header>Header</el-header>
       <el-main>Main</el-main>
@@ -17,3 +17,4 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped></style>
