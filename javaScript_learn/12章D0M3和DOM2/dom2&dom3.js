@@ -77,54 +77,54 @@
      * CSS规则
      */
 
-     var sheet = document.styleSheets[0];
-   //   取得规则列表
-     var rules = sheet.cssRules || sheet.rules
-     console.log(rules)
+   //   var sheet = document.styleSheets[0];
+   // //   取得规则列表
+   //   var rules = sheet.cssRules || sheet.rules
+   //   console.log(rules)
 
-   //   取得第一条规则
-     var rule = rules[0];
-   //  返回当前规则的选择符文本
-     console.log(rule.selectorText);
-   //   完整的规则对应的文本
-     console.log(rule.style.cssText)
+   // //   取得第一条规则
+   //   var rule = rules[0];
+   // //  返回当前规则的选择符文本
+   //   console.log(rule.selectorText);
+   // //   完整的规则对应的文本
+   //   console.log(rule.style.cssText)
 
-     console.log(rule.style.backgroundColor)
+   //   console.log(rule.style.backgroundColor)
 
-     rule.style.backgroundColor = "green"
+   //   rule.style.backgroundColor = "green"
 
 
      /**
       * 创建规则
       */
       // 添加新规则CSS
-      sheet.insertRule("body{background-color:black}",0)
+      // sheet.insertRule("body{background-color:black}",0)
       // //仅对IE有效
       // sheet.addRule("body{background-color:black}",0)
 
-      function  insertRule(sheet, selectorText,cssText,position){
-         if (sheet.insertRule) {
-            sheet.insertRule(selectorText+"{"+cssText+"}".position)
-         }else if(sheet.addRule){
-            sheet.addRule(selectorText+"{"+cssText+"}".position)
-         }
-      }
-      /**
-       * 删除规则
-       */
-      //DOM方法
-      sheet.deleteRule(0);
+      // function  insertRule(sheet, selectorText,cssText,position){
+      //    if (sheet.insertRule) {
+      //       sheet.insertRule(selectorText+"{"+cssText+"}".position)
+      //    }else if(sheet.addRule){
+      //       sheet.addRule(selectorText+"{"+cssText+"}".position)
+      //    }
+      // }
+      // /**
+      //  * 删除规则
+      //  */
+      // //DOM方法
+      // sheet.deleteRule(0);
       
-      //仅对IE有效
-      sheet.removeRule(0)
+      // //仅对IE有效
+      // sheet.removeRule(0)
 
-      function deleteRule(sheet, index){
-         if (sheet.deleteRule) {
-            sheet.deleteRule(index)
-         }else if(sheet.removeRule){
-            sheet.removeRule(index);
-         }
-      }
+      // function deleteRule(sheet, index){
+      //    if (sheet.deleteRule) {
+      //       sheet.deleteRule(index)
+      //    }else if(sheet.removeRule){
+      //       sheet.removeRule(index);
+      //    }
+      // }
 
 
       /**
@@ -227,3 +227,96 @@
                
             }
          }
+
+
+         /**
+          * TreeWalker是NodeIterator的一个更高级的版本
+          */
+         var div = document.getElementById("div1");
+         var filter = function(node){
+            return node.tagName.toLowerCase() == "li" ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+         }
+
+         var walker = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT,filter,false);
+
+         var node1 = walker.nextNode();
+         // while (node1 !== null) {
+         //    console.log(node1.tagName);
+         //    node1 = walker.nextNode
+         // }
+
+
+         /***
+          * 12.4范围，为了让开发人员更方便的控制页面， 模块定义了范围接口，通过范围可以选择文档中的一个区域，从而不必考虑节点的界限
+          */
+
+         //  DOM中的范围
+         // 使用hasFeature()或者直接检测该方法
+         var supportsRange = document.implementation.hasFeature("Range","2.0");
+         var alsoSupportsRange = (typeof document.createRange == "function");
+
+         // 创建DOM范围内
+         var range = document.createRange();
+         var p1 = document.getElementById("p1");
+         range.selectNode(p1)
+         // 包含范围起点的节点
+         console.log(range.startContainer);
+         // 范围在startContainer中起点的偏移量
+         console.log(range.startOffset);
+         // 包含范围终点的节点
+         console.log(range.endContainer);
+         // 范围在endContainer中终点的偏移量
+         console.log(range.endOffset);
+
+         /**
+          * 操作DOM范围的内容
+          */
+
+          var p2 = document.getElementById("p2"),
+            helloNode = p2.firstChild.firstChild,
+            worldNode = p2.lastChild,
+            range1 = document.createRange();
+            range1.setStart(helloNode,2);
+            range1.setEnd(worldNode,3);
+            // 这个方法能够从文档中删除范围所包含的内容
+            // range1.deleteContents();
+
+            // extractContents()会返回范围的文档片段
+            // var fragment = range1.extractContents();
+            // p2.parentNode.appendChild(fragment);
+
+            // cloneContents()范围范围对象的一个副本
+            var fragment1 = range1.cloneContents();
+            p2.parentNode.appendChild(fragment1);
+
+
+            /**
+             * 4 插入DOM范围中的内容
+             */
+
+
+             var span = document.createElement("span");
+             span.style.color = "red";
+             span.appendChild(document.createTextNode("Inserted text"));
+            //  chauffeur到了hello的 llo前面,而该位置就是范围选取的开始位置
+             range1.insertNode(span)
+             range1.selectNode(helloNode);
+            var span1 = document.createElement("span");
+             span1.style.color = "yellow";
+            //  环绕范围插入内容 后台会执行以下步骤
+            /**
+             * 1.提取出范围中的内容
+             * 2.将给定节点插入到文档中原来范围所在的位置
+             * 3.将文档片段的内容添加到给定的节点中
+             */
+             range1.surroundContents(span1);
+             console.log(p2);
+
+
+             /**
+              * 5.折叠DOM范围
+              * 所谓折叠范围，就是指范围中未选择文档的任何部分
+              */
+
+            //   折叠到起点
+              range1.collapse(true);
