@@ -204,3 +204,26 @@
          console.log(document.documentElement.offsetWidth)
          console.log("获取偏移量完");
         }
+
+        /**
+         * NodeIterator
+         */
+
+         // var nodeIrerator = document.createNodeIterator();
+         // // 作为搜索起点的树种的节点
+         // nodeIrerator.root;
+         // // 表示访问哪个节点的数字代码
+         // nodeIrerator.whatToShow;
+         console.log("NodeIterator")
+         console.log(NodeFilter.SHOW_ALL)
+
+         var whatToShow  = NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT;
+
+         console.log(whatToShow);
+
+
+         var filter = {
+            acceptNode:function(node){
+               
+            }
+         }
